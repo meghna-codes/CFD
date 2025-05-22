@@ -12,6 +12,14 @@ The incompressible form of **Navier-Stokes equation** is given by:\
 \
 $$\rho \frac{d \mathbf{v}}{dt} = - \mathbf{\nabla} P + \rho \textbf{g} + \mu \nabla^2 \mathbf{v}$$
 
+### Step 0: Installing phiflow
+
+Run this command in the Python interface you're using:
+```
+!pip install --upgrade --quiet phiflow==3.1
+#!pip install --upgrade --quiet git+https://github.com/tum-pbs/PhiFlow@develop
+```
+
 ### Step 1: Setting up the domain and Marker Grid
 \
 I'm creating a first CenteredGrid here, which is initialized by a Sphere geometry object. This will represent the inflow region where hot smoke is generated. I have defined a Box of size 160 x 128. This is the physical scale in terms of spatial units in the simulation, i.e., a velocity of magnitude 1 will move the smoke density by 1 unit per 1 time unit.
