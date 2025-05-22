@@ -36,7 +36,7 @@ Next, create grids for the quantities you want to simulate (velocity and smoke d
 \
 By repeatedly calling the step function, the time evolution of the hot smoke can be studied.
 
-![Smokerise](markergrid.png)
+<img src="markergrid.png" width="256" height="320">
 
 
 The hot plume is starting to rise. Because of the inflow being located off-center to the left (with x position 30), the plume will curve towards the right when it hits the top wall of the domain.
@@ -59,5 +59,34 @@ You can also take a look at the velocities.
 
 # 2. Lid-Driven Cavity Flow using MATLAB
 
+Varying the Reynolds number for a viscous flow model, I used MATLAB to simulate viscous incompressible fuid flow in a 2D box using projection method. The code uses finite differencing and has different components like  discretization on a staggered grid, an implicit viscosity step, explicit treatment of non-linear advection terms, as well as the visualization of the solution over time. The code can be broken up into 7 segments: 
 
+### 1. Initialization and Parameter Setup:
+Parameters such as Reynolds number (R), time step (dt), final simulation time (tf), dimensions of the computational domain (lx and ly), and number of grid points (nx and ny) are defined. The number of time steps (nt) is computed based on the final time and time step. Grid points along x and y directions are generated using linspace, and a mesh grid (X and Y) is created using meshgrid(x, y).
 
+### 2. Initial and Boundary Conditions:
+Initial velocities U and V are initialized as zero arrays. Boundary conditions for velocity components in North, South, East, West directions (uN, vN, uS, vS, uW, vW, uE, vE) are set based on the problem setup. These conditions represent Dirichlet or Neumann boundary conditions.
+
+### 3. Implicit Viscosity:
+Setting up matrices and performing calculations to handle the viscous terms implicitly. This is achieved using a linear solver (chol) applied to the discretized form of the equations.
+
+### 4. Pressure Correction:
+Pressure correction is applied to enforce incompressibility. This is done by solving for pressure (P) iteratively to satisfy the divergence-free condition div(v) = 0.
+
+### 5. Nonlinear Terms Handling: 
+Computing the nonlinear terms in the Navier-Stokes equations explicitly. It uses a finite difference method to calculate the convective and diffusive terms.
+   
+### 6. Visualization: 
+Contours and quiver plots to visualize pressure (P) and velocity components (U, V) respectively. Allows monitoring the flow evolution over time at specified time intervals (nsteps).
+   
+### 7. Loop Over Time Steps: 
+The main loop iterates over time steps (k) from 1 to the total number of time steps (nt). Within each iteration, it updates the velocity and pressure fields based on the computed terms and boundary conditions.
+
+## Results
+Visualization of the time evolution of a 2D viscous flow, done by a colormap-isoline plot for pressure and  normalized quiver and streamline plot for the velocity field $(u,v)$ for three values of Reynolds number $R$: $10,100$ and $1000$ with time step $dt=0.1s$
+
+<img src="cavityflowR_10.png" width="600" height="450">
+
+<img src="cavityflowR_100.png" width="600" height="450">
+
+<img src="cavityflowR_1000.png" width="600" height="450">
