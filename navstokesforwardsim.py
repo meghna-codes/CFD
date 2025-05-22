@@ -6,11 +6,11 @@ import pylab
 DT = 1.5 #times step
 NU = 0.01 #kinematic viscosity
 
-INFLOW = CenteredGrid(Sphere(center=tensor([30,15], channel(vector='x,y')), radius=10), extrapolation.BOUNDARY, x=32, y=40, bounds=Box(x=(0,80),y=(0,100))) * 0.2
+INFLOW = CenteredGrid(Sphere(center=tensor([30,15], channel(vector='x,y')), radius=10), extrapolation.BOUNDARY, x=32, y=40, bounds=Box(x=(0,128),y=(0,160))) * 0.2
 
 #creating staggered grids
-smoke = CenteredGrid(0, extrapolation.BOUNDARY, x=32, y=40, bounds=Box(x=(0,80),y=(0,100)))  # sampled at cell centers
-velocity = StaggeredGrid(0, extrapolation.ZERO, x=32, y=40, bounds=Box(x=(0,80),y=(0,100)))  # sampled in staggered form at face centers 
+smoke = CenteredGrid(0, extrapolation.BOUNDARY, x=32, y=40, bounds=Box(x=(0,128),y=(0,160)))  # sampled at cell centers
+velocity = StaggeredGrid(0, extrapolation.ZERO, x=32, y=40, bounds=Box(x=(0,128),y=(0,160)))  # sampled in staggered form at face centers 
 
 #state of fluid system advances by dt
 def step(velocity, smoke, pressure, dt=1.0, zhi =1.0): #zhi=buoyancy factor
