@@ -85,8 +85,8 @@ The main loop iterates over time steps (k) from 1 to the total number of time st
 ## Results
 Visualization of the time evolution of a 2D viscous flow, done by a colormap-isoline plot for pressure and  normalized quiver and streamline plot for the velocity field $(u,v)$ for three values of Reynolds number $R$: $10,100$ and $1000$ with time step $dt=0.1s$
 
-![cavityflow_R10]("cavityflowR_10.png")
+![cavityflow_R10](cavityflowR_10.png)
 
-![cavityflow_R100]("cavityflowR_100.png")
+![cavityflow_R100](cavityflowR_100.png)
 
-![cavityflow_R1000]("cavityflowR_1000.png")
+![cavityflow_R1000](cavityflowR_1000.png)
